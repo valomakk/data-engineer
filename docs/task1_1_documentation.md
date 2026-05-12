@@ -413,6 +413,70 @@ data engineer/
 
 ---
 
+## Шаг 11: Публикация на GitHub
+
+### Первоначальная публикация (один раз)
+
+**1. Создать репозиторий:**
+- Открыть https://github.com/new
+- Repository name: `data-engineer`
+- Выбрать **Public**
+- Нажать **Create repository**
+
+**2. Создать Personal Access Token:**
+- Открыть https://github.com/settings/tokens/new
+- Note: любое название
+- Expiration: 90 days
+- Поставить галочку **repo**
+- Нажать **Generate token** — скопировать сразу (потом не покажет)
+
+**3. Создать `.gitignore`** в корне проекта:
+```
+airflow/logs/
+airflow/plugins/
+__pycache__/
+*.pyc
+.env
+```
+Нужен чтобы не пушить логи Docker (там симлинки — git на Windows их не поддерживает).
+
+**4. Залить код:**
+```powershell
+cd "C:\Users\Lera\Documents\data engineer"
+git init
+git add -A
+git commit -m "Task 1.1: ETL CSV to PostgreSQL DS layer with Airflow orchestration"
+git branch -M main
+git remote add origin https://github.com/valomakk/data-engineer.git
+git push -u origin main
+```
+При запросе пароля — вставить **токен** (не пароль от GitHub).
+
+### Добавить изменения после первой публикации
+
+```powershell
+cd "C:\Users\Lera\Documents\data engineer"
+git add -A
+git commit -m "описание изменений"
+git push
+```
+
+### Добавить ссылку на видео
+
+После записи видео создать файл `video_link.txt` в корне проекта:
+```
+Ссылка на видео: https://drive.google.com/...
+```
+
+Потом запушить:
+```powershell
+git add video_link.txt
+git commit -m "Add video link"
+git push
+```
+
+---
+
 ## Требования к демонстрации (чеклист)
 
 - [ ] Опубликовать код на GitHub
