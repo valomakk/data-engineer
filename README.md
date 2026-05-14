@@ -31,6 +31,16 @@ data-engineer/
 │       ├── task1_3_documentation.md
 │       └── task1_3_explanation.md
 │
+├── task_1_4/               # Задача 1.4: Экспорт и импорт CSV
+│   ├── export_f101.py                  # Выгрузка dm_f101_round_f → CSV
+│   ├── import_f101.py                  # Загрузка CSV → dm_f101_round_f_v2
+│   ├── data/
+│   │   └── f101_export.csv             # Выгруженный файл
+│   ├── logs/                           # Лог-файлы экспорта и импорта
+│   ├── demo_video.txt                  # Ссылка на демо-видео
+│   └── docs/
+│       └── task1_4_assignment.md
+│
 ├── airflow/
 │   ├── dags/
 │   │   ├── bank_etl_dag.py             # DAG загрузки CSV в DS (задача 1.1)
@@ -68,6 +78,7 @@ DM (Data Mart) — аналитические витрины
 | dm.dm_account_turnover_f | Обороты по лицевым счетам за день |
 | dm.dm_account_balance_f | Остатки по лицевым счетам за день |
 | dm.dm_f101_round_f | 101 форма (остатки и обороты по балансовым счетам за месяц) |
+| dm.dm_f101_round_f_v2 | Копия 101 формы для загрузки из CSV (задача 1.4) |
 
 ### Логирование
 
@@ -115,6 +126,18 @@ bank_dm_january_2018
 ```sql
 -- Выполнить в pgAdmin:
 task_1_3/sql/task1_3_f101_procedure.sql
+```
+
+### 6. Экспорт и импорт CSV (задача 1.4)
+
+```bash
+# Экспорт dm_f101_round_f → CSV
+python task_1_4/export_f101.py
+
+# (Опционально) отредактировать task_1_4/data/f101_export.csv
+
+# Импорт CSV → dm_f101_round_f_v2
+python task_1_4/import_f101.py
 ```
 
 ## Технологии
